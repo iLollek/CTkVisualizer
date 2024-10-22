@@ -8,6 +8,10 @@
 
 *Inspired from [Akascape's TkVisualizer](https://github.com/Akascape/TkVisualizer/)*
 
+**Install it by running:**
+``pip install CTkVisualizer``
+(Verify that you're atleast running with Version 1.0.3)
+
 ---
 
 ## Disclaimer
