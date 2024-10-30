@@ -126,6 +126,7 @@ class AudioVisualizer(ctk.CTkFrame):
         self.is_currently_playing = False
         self.color = color
         self.transparency_mode = transparency_mode
+        self.current_time = None
 
         if self.filename is not None:
             self.play_new_song(self.filename)
@@ -195,6 +196,7 @@ class AudioVisualizer(ctk.CTkFrame):
     def update_visualizer(self):
         """Update the visualizer in real-time based on the current playback position."""
         current_time = pygame.mixer.music.get_pos() / 1000.0  # Get current position in seconds
+        self.current_time = current_time
         dt = time.time() - self.last_time
         self.last_time = time.time()
 
@@ -297,3 +299,6 @@ class AudioVisualizer(ctk.CTkFrame):
             raise ValueError("Volume must be between 0.0 and 1.0")
 
         pygame.mixer.music.set_volume(volume)
+
+    def is_pygame_mixer_initialized(self) -> bool:
+        return False if pygame.mixer.get_init() is None else True
